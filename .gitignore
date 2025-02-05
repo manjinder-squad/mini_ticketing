@@ -1,0 +1,40 @@
+# Node.js / Vue.js
+/frontend/node_modules
+/frontend/dist
+/frontend/.env
+/frontend/.vscode
+/frontend/.idea
+
+# Laravel
+/backend/vendor
+/backend/node_modules
+/backend/.env
+/backend/.env.local
+/backend/.env.*.local
+/backend/.idea
+/backend/.vscode
+/backend/storage
+/backend/public/storage
+/backend/bootstrap/cache
+/backend/.phpunit.result.cache
+
+# Docker
+docker-compose.override.yml
+.docker/
+docker/*.log
+
+# Logs
+*.log
+*.log.*
+*.bak
+
+# IDE files
+/.idea
+/.vscode
+*.swp
+
+# MacOS
+.DS_Store
+
+# Miscellaneous
+.env

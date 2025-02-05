@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/var/www/html
+    environment:
+      - APP_ENV=local
+      - DB_CONNECTION=mongodb
+    expose:
+      - "9000"  # Exposing PHP-FPM port for nginx
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vue_frontend
+    restart: always
+    depends_on:
+      - app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"  # Binding nginx to port 80 on the host
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
+    driver: bridge
