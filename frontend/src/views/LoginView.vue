@@ -9,7 +9,7 @@
       <!-- Form -->
       <form class="mt-6 space-y-4" @submit.prevent="handleLogin">
         <!-- Email Input -->
-        <div>
+        <div class="mb-4">
           <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >Email</label
           >
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Password Input -->
-        <div>
+        <div class="mb-4">
           <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >Password</label
           >
@@ -42,7 +42,7 @@
         <p v-if="errorMessage" class="text-red-500 text-sm text-center">{{ errorMessage }}</p>
 
         <!-- Submit Button -->
-        <div>
+        <div class="mb-4">
           <button
             type="submit"
             :disabled="loading"

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+  <div class="max-w-lg w-full">
     <h2 class="text-xl font-semibold text-gray-900 mb-4">
       {{ isEdit ? 'Edit Ticket' : 'Create Ticket' }}
     </h2>

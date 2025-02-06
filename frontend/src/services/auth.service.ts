@@ -1,6 +1,6 @@
 // src/services/AuthService.ts
 import axios from '@/api/axios'
-import type { LoginCredentials, RegisterData } from '@/types'
+import type { LoginCredentials, RegisterData, User } from '@/types'
 
 interface AuthResponse {
     token: string
@@ -17,6 +17,11 @@ const register = async (data: RegisterData): Promise<AuthResponse> => {
     return response.data.data
 }
 
+const getUser = async (): Promise<User> => {
+  const response = await axios.get<{ data: User }>('/user')
+  return response.data
+}
+
 const logout = async (): Promise<void> => {
     await axios.delete('/logout')
 }
@@ -24,5 +29,6 @@ const logout = async (): Promise<void> => {
 export const AuthService = {
     login,
     register,
-    logout
+    logout,
+    getUser,
 }

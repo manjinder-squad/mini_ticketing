@@ -44,8 +44,8 @@
               <h3 class="text-lg font-semibold text-gray-900">{{ ticket.title }}</h3>
               <p class="mt-1 text-sm text-gray-600">{{ ticket.description }}</p>
               <div class="mt-2 flex items-center text-xs text-gray-500">
-                <span class="mr-3">📅 Created: {{ formatDate(ticket.created_at) }}</span>
-                <span>⏳ Updated: {{ formatDate(ticket.updated_at) }}</span>
+                <span class="mr-3">📅 Created: {{ ticket.created_at }}</span>
+                <span>⏳ Updated: {{ ticket.updated_at }}</span>
               </div>
             </div>
 
@@ -81,7 +81,7 @@
         class="fixed inset-0 z-10 flex items-center justify-center px-4"
     >
       <!-- Transparent background with subtle dimming -->
-      <div class="fixed inset-0 bg-black bg-opacity-20"></div> <!-- Dark but transparent background -->
+      <div class="fixed inset-0 bg-black opacity-50"></div> <!-- Dark but transparent background -->
       <div class="relative bg-white shadow-lg rounded-lg w-full max-w-lg p-6">
         <TicketForm
             :ticket="editingTicket"

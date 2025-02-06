@@ -67,5 +67,17 @@ export const useAuthStore = defineStore('auth', {
         throw new Error(error)
       }
     },
+
+    async loadUser(): Promise<void> {
+      if (this.token) {
+        try {
+          const user = await AuthService.getUser()
+          this.user = user
+          this.isAuthenticated = true
+        } catch (error) {
+          this.logout()
+        }
+      }
+    },
   },
 })

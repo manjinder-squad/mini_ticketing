@@ -89,6 +89,17 @@
           </button>
         </div>
       </form>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Already have an account?
+          <router-link
+            to="/"
+            class="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400"
+          >
+            Sign in here
+          </router-link>
+        </p>
+      </div>
     </div>
   </div>
 </template>
